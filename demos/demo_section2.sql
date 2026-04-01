@@ -52,4 +52,15 @@ FROM	happiness_scores hs
         ON hs.country = cs.country
 WHERE	hs.country IS NULL;
 
+-- 3. Joining on multiple columns
+
+select * from happiness_scores hs 
+
+select * from inflation_rates ir 
+
+select  hs."year", hs.country, hs.happiness_score, 
+        ir.inflation_rate 
+from    happiness_scores hs 
+        inner join inflation_rates ir 
+        on hs.country = ir.country_name and hs."year" = ir."year" 
 
