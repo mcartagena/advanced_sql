@@ -64,3 +64,19 @@ from    happiness_scores hs
         inner join inflation_rates ir 
         on hs.country = ir.country_name and hs."year" = ir."year" 
 
+-- 4. Joining multiple tables
+
+select * from happiness_scores hs 
+
+select * from inflation_rates ir 
+
+select * from country_stats cs 
+
+select hs."year", hs.country, hs.happiness_score, 
+       cs.continent, ir.inflation_rate 
+from   happiness_scores hs 
+       left join country_stats cs 
+       	on hs.country = cs.country
+       left join inflation_rates ir 
+       	on hs."year" = ir."year" and hs.country = ir.country_name 
+       	
