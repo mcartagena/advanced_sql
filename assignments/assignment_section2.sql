@@ -61,11 +61,24 @@ where  o.product_id is null
 -- Which products are within 25 cents of each other in terms of unit price?
 
 -- View the products table
-
+select * 
+from   products
 
 -- Join the products table with itself so each candy is paired with a different candy
-
+select p1.product_name , p1.unit_price , p2.product_name , p2.unit_price , 
+	   (p1.unit_price - p2.unit_price) as price_diff
+from   products p1
+       inner join products p2
+       on abs(p1.unit_price - p2.unit_price) < 0.25     
         
 -- Calculate the price difference, do a self join, and then return only price differences under 25 cents
+select p1.product_name , p1.unit_price , p2.product_name , p2.unit_price , 
+	   (p1.unit_price - p2.unit_price) as price_diff
+from   products p1
+       inner join products p2
+       on abs(p1.unit_price - p2.unit_price) < 0.25       
+where  p1.product_id <> p2.product_id 
+       and p1.product_name < p2.product_name 	
+order by price_diff desc
 
 
