@@ -203,6 +203,15 @@ union all
 select *
 from outerwear
 
+-- Union with different column names
+select year, country, happiness_score from happiness_scores
+union
+select 2024, country, ladder_score from happiness_scores_current;
+
+-- best performing
+select year, country, happiness_score from happiness_scores
+union all
+select 2024, country, ladder_score from happiness_scores_current;
 
 
 
